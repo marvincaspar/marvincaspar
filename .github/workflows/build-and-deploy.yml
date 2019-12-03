@@ -1,0 +1,45 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:    
+      - master 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the docker image
+      run: | 
+        docker login docker.pkg.github.com -u marvincaspar -p ${{ secrets.GITHUB_TOKEN }}
+        docker build . --file Dockerfile --tag docker.pkg.github.com/marvincaspar/marvincaspar/web:latest --tag docker.pkg.github.com/marvincaspar/marvincaspar/web:$(date +%s)
+        docker push docker.pkg.github.com/marvincaspar/marvincaspar/web
+  # deploy:
+  #   needs: [build]
+  #   runs-on: ubuntu-latest
+  #   steps:
+    - name: Copy docker-compose file to server
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.KEY }}
+      with:
+        source: "docker-compose.yml"
+        target: "marvincaspar"
+    - name: Restart new docker containers
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          docker login docker.pkg.github.com -u marvincaspar -p ${{ secrets.GITHUB_TOKEN }}
+          cd marvincaspar
+          docker-compose pull
+          docker-compose down
+          docker-compose up -d
+      

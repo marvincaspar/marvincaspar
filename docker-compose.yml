@@ -1,0 +1,18 @@
+version: '3.6'
+
+services:
+  web:
+    image: docker.pkg.github.com/marvincaspar/marvincaspar/web:latest
+    networks:
+      - web
+    labels:
+      traefik.docker.network: web
+      traefik.enable: true
+      traefik.basic.frontend.rule: Host:marvincaspar.de,www.marvincaspar.de
+      traefik.basic.port: 80
+      traefik.backend: marvincaspar
+
+networks:
+  web:
+    driver: overlay
+    external: true

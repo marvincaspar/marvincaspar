@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>Marvin Caspar</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
+    <style>
+        /* ------------------------------------------------------------------ */
+        /* General Styles */
+        /* ------------------------------------------------------------------ */
+        
+        html {
+            font-size: 62.5%;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body {
+            background: #0f0f0f;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 30px;
+            color: #838C95;
+            margin: 0px;
+            padding: 0px;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        .row {
+            width: 96%;
+            max-width: 1020px;
+            margin: 0 auto;
+        }
+        
+        ul {
+            list-style: none outside;
+        }
+        
+        li {
+            line-height: 18px;
+            margin-bottom: 12px;
+        }
+        /* ------------------------------------------------------------------ */
+        /* Header Styles */
+        /* ------------------------------------------------------------------ */
+        
+        header {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background: #161415 url(./img/background.jpg) no-repeat top center;
+            background-size: cover !important;
+            -webkit-background-size: cover !important;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        
+        header .banner {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 auto;
+            width: 85%;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+        
+        header .banner-text h1 {
+            font-weight: normal;
+            color: #fff;
+            letter-spacing: -2px;
+            margin: 0 auto 0.8em auto;
+            text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
+        }
+        
+        header .banner-text h3 {
+            font: 1.2em 'Roboto Slab', serif;
+            color: #A8A8A8;
+            margin: 0 auto;
+            width: 90%;
+            text-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
+        }
+        
+        header .banner-text h3 span {
+            color: #fff;
+        }
+        
+        .hover {
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+        
+        header .social {
+            margin: 24px 0;
+            padding: 0;
+            font-size: 32px;
+            text-shadow: 0px 1px 2px rgba(0, 0, 0, .8);
+        }
+        
+        header .social li {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 0;
+        }
+        
+        header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        header a:hover {
+            color: #01c7da;
+        }
+        
+        header a .icon {
+            display: inline-block;
+            width: 1.0em;
+            height: 1.0em;
+            stroke-width: 0px;
+            stroke: currentColor;
+            fill: currentColor;
+        }
+        
+        header .location {
+            position: absolute;
+            bottom: 30px;
+            color: #A8A8A8;
+            display: block;
+            height: 42px;
+            margin: 0 auto;
+            width: 100%;
+            font-size: 16px;
+            line-height: 42px;
+        }
+        
+        @media screen and (min-width: 1021px) {
+            header .banner-text h1.responsive-headline {
+                font-size: 90px;
+            }
+        }
+        
+        @media screen and (max-width: 1020px) {
+            header .banner-text h1.responsive-headline {
+                font-size: 9vw;
+            }
+        }
+        /* ------------------------------------------------------------------ */
+        /* Modal Styles */
+        /* ------------------------------------------------------------------ */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 5vh;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 90vh;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <symbol id="icon-envelope-o" viewBox="0 0 32 32">
+                <title>envelope-o</title>
+                <path d="M29.714 26.857v-13.714c-0.375 0.429-0.786 0.821-1.232 1.179-2.554 1.964-5.125 3.964-7.607 6.036-1.339 1.125-3 2.5-4.857 2.5h-0.036c-1.857 0-3.518-1.375-4.857-2.5-2.482-2.071-5.054-4.071-7.607-6.036-0.446-0.357-0.857-0.75-1.232-1.179v13.714c0 0.304 0.268 0.571 0.571 0.571h26.286c0.304 0 0.571-0.268 0.571-0.571zM29.714 8.089c0-0.446 0.107-1.232-0.571-1.232h-26.286c-0.304 0-0.571 0.268-0.571 0.571 0 2.036 1.018 3.804 2.625 5.071 2.393 1.875 4.786 3.768 7.161 5.661 0.946 0.768 2.661 2.411 3.911 2.411h0.036c1.25 0 2.964-1.643 3.911-2.411 2.375-1.893 4.768-3.786 7.161-5.661 1.161-0.911 2.625-2.893 2.625-4.411zM32 7.429v19.429c0 1.571-1.286 2.857-2.857 2.857h-26.286c-1.571 0-2.857-1.286-2.857-2.857v-19.429c0-1.571 1.286-2.857 2.857-2.857h26.286c1.571 0 2.857 1.286 2.857 2.857z"></path>
+            </symbol>
+            <symbol id="icon-twitter-square" viewBox="0 0 27 32">
+                <title>twitter-square</title>
+                <path d="M22.857 10.893c-0.679 0.304-1.393 0.5-2.161 0.607 0.786-0.464 1.375-1.214 1.661-2.089-0.732 0.429-1.536 0.75-2.393 0.911-0.679-0.732-1.661-1.179-2.732-1.179-2.071 0-3.75 1.679-3.75 3.75 0 0.286 0.018 0.589 0.089 0.857-3.125-0.161-5.893-1.643-7.75-3.929-0.321 0.554-0.518 1.214-0.518 1.893 0 1.304 0.607 2.446 1.625 3.125-0.625-0.018-1.214-0.196-1.786-0.464v0.036c0 1.821 1.375 3.339 3.089 3.679-0.321 0.089-0.571 0.143-0.911 0.143-0.232 0-0.464-0.036-0.696-0.071 0.482 1.482 1.857 2.571 3.5 2.607-1.286 1-2.893 1.607-4.661 1.607-0.304 0-0.607-0.018-0.893-0.054 1.661 1.054 3.625 1.679 5.75 1.679 6.893 0 10.679-5.714 10.679-10.679 0-0.161 0-0.321-0.018-0.482 0.732-0.518 1.375-1.179 1.875-1.946zM27.429 7.429v17.143c0 2.839-2.304 5.143-5.143 5.143h-17.143c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143c2.839 0 5.143 2.304 5.143 5.143z"></path>
+            </symbol>
+            <symbol id="icon-facebook-square" viewBox="0 0 27 32">
+                <title>facebook-square</title>
+                <path d="M22.286 2.286c2.839 0 5.143 2.304 5.143 5.143v17.143c0 2.839-2.304 5.143-5.143 5.143h-3.357v-10.625h3.554l0.536-4.143h-4.089v-2.643c0-1.196 0.321-2 2.054-2l2.179-0.018v-3.696c-0.375-0.054-1.679-0.161-3.179-0.161-3.161 0-5.339 1.929-5.339 5.464v3.054h-3.571v4.143h3.571v10.625h-9.5c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143z"></path>
+            </symbol>
+            <symbol id="icon-linkedin-square" viewBox="0 0 27 32">
+                <title>linkedin-square</title>
+                <path d="M4.232 25.25h4.125v-12.393h-4.125v12.393zM8.625 9.036c-0.018-1.214-0.893-2.143-2.304-2.143s-2.339 0.929-2.339 2.143c0 1.179 0.893 2.143 2.286 2.143h0.018c1.446 0 2.339-0.964 2.339-2.143zM19.071 25.25h4.125v-7.107c0-3.804-2.036-5.571-4.75-5.571-2.214 0-3.196 1.232-3.732 2.089h0.036v-1.804h-4.125s0.054 1.161 0 12.393v0h4.125v-6.929c0-0.357 0.018-0.732 0.125-1 0.304-0.732 0.982-1.5 2.125-1.5 1.482 0 2.071 1.125 2.071 2.804v6.625zM27.429 7.429v17.143c0 2.839-2.304 5.143-5.143 5.143h-17.143c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143c2.839 0 5.143 2.304 5.143 5.143z"></path>
+            </symbol>
+            <symbol id="icon-github-square" viewBox="0 0 27 32">
+                <title>github-square</title>
+                <path d="M9.268 21.429v0c0.036-0.054 0.018-0.161-0.054-0.232-0.089-0.071-0.196-0.089-0.25-0.036-0.036 0.054-0.018 0.161 0.054 0.232 0.089 0.071 0.196 0.089 0.25 0.036zM8.768 20.696c-0.054-0.071-0.143-0.107-0.214-0.071-0.054 0.036-0.054 0.143 0 0.214 0.071 0.089 0.161 0.125 0.214 0.089v0c0.054-0.036 0.054-0.143 0-0.232zM8.036 19.982v0c0.018-0.036-0.018-0.107-0.089-0.143-0.054-0.018-0.125-0.018-0.143 0.036-0.036 0.054 0 0.107 0.071 0.143 0.071 0.018 0.143 0.018 0.161-0.036zM8.411 20.393v0c0.036-0.036 0.036-0.125-0.036-0.179-0.054-0.071-0.143-0.089-0.179-0.054-0.054 0.054-0.036 0.125 0.018 0.196 0.054 0.054 0.143 0.089 0.196 0.036zM9.946 21.732v0c0.018-0.071-0.054-0.161-0.161-0.196s-0.196 0-0.232 0.071c-0.018 0.071 0.054 0.161 0.161 0.196s0.196 0 0.232-0.071zM10.696 21.786v0c0-0.071-0.089-0.143-0.214-0.143-0.107 0-0.179 0.071-0.179 0.143s0.089 0.143 0.196 0.143 0.196-0.071 0.196-0.143zM11.393 21.661v0c-0.018-0.071-0.125-0.107-0.232-0.089s-0.179 0.089-0.161 0.161 0.107 0.125 0.214 0.107 0.179-0.107 0.179-0.179zM22.857 16c0-5.054-4.089-9.143-9.143-9.143s-9.143 4.089-9.143 9.143c0 4.036 2.625 7.464 6.25 8.679 0.464 0.089 0.625-0.196 0.625-0.446 0-0.214 0-0.929-0.018-1.696 0 0-2.536 0.554-3.071-1.089 0 0-0.411-1.054-1.018-1.321 0 0-0.821-0.571 0.071-0.571 0 0 0.893 0.071 1.393 0.946 0.804 1.411 2.143 1 2.661 0.768 0.089-0.589 0.321-1 0.589-1.232-2.036-0.232-4.179-1.018-4.179-4.518 0-1 0.357-1.804 0.946-2.446-0.089-0.232-0.411-1.161 0.089-2.429 0.768-0.232 2.518 0.946 2.518 0.946 0.732-0.214 1.5-0.304 2.286-0.304s1.554 0.089 2.286 0.304c0 0 1.75-1.179 2.518-0.946 0.5 1.268 0.179 2.196 0.089 2.429 0.589 0.643 0.946 1.446 0.946 2.446 0 3.518-2.143 4.286-4.179 4.518 0.321 0.286 0.625 0.839 0.625 1.696 0 1.214-0.018 2.196-0.018 2.5 0 0.25 0.161 0.536 0.625 0.446 3.625-1.214 6.25-4.643 6.25-8.679zM27.429 7.429v17.143c0 2.839-2.304 5.143-5.143 5.143h-17.143c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143c2.839 0 5.143 2.304 5.143 5.143z"></path>
+            </symbol>
+            <symbol id="icon-twitter" viewBox="0 0 30 32">
+                <title>twitter</title>
+                <path d="M28.929 7.286c-0.786 1.143-1.768 2.161-2.893 2.982 0.018 0.25 0.018 0.5 0.018 0.75 0 7.625-5.804 16.411-16.411 16.411-3.268 0-6.304-0.946-8.857-2.589 0.464 0.054 0.911 0.071 1.393 0.071 2.696 0 5.179-0.911 7.161-2.464-2.536-0.054-4.661-1.714-5.393-4 0.357 0.054 0.714 0.089 1.089 0.089 0.518 0 1.036-0.071 1.518-0.196-2.643-0.536-4.625-2.857-4.625-5.661v-0.071c0.768 0.429 1.661 0.696 2.607 0.732-1.554-1.036-2.571-2.804-2.571-4.804 0-1.071 0.286-2.054 0.786-2.911 2.839 3.5 7.107 5.786 11.893 6.036-0.089-0.429-0.143-0.875-0.143-1.321 0-3.179 2.571-5.768 5.768-5.768 1.661 0 3.161 0.696 4.214 1.821 1.304-0.25 2.554-0.732 3.661-1.393-0.429 1.339-1.339 2.464-2.536 3.179 1.161-0.125 2.286-0.446 3.321-0.893z"></path>
+            </symbol>
+            <symbol id="icon-facebook" viewBox="0 0 19 32">
+                <title>facebook</title>
+                <path d="M17.125 0.214v4.714h-2.804c-2.196 0-2.607 1.054-2.607 2.571v3.375h5.232l-0.696 5.286h-4.536v13.554h-5.464v-13.554h-4.554v-5.286h4.554v-3.893c0-4.518 2.768-6.982 6.804-6.982 1.929 0 3.589 0.143 4.071 0.214z"></path>
+            </symbol>
+            <symbol id="icon-github" viewBox="0 0 27 32">
+                <title>github</title>
+                <path d="M13.714 2.286c7.571 0 13.714 6.143 13.714 13.714 0 6.054-3.929 11.196-9.375 13.018-0.696 0.125-0.946-0.304-0.946-0.661 0-0.446 0.018-1.929 0.018-3.768 0-1.286-0.429-2.107-0.929-2.536 3.054-0.339 6.268-1.5 6.268-6.768 0-1.5-0.536-2.714-1.411-3.679 0.143-0.357 0.607-1.75-0.143-3.643-1.143-0.357-3.768 1.411-3.768 1.411-1.089-0.304-2.268-0.464-3.429-0.464s-2.339 0.161-3.429 0.464c0 0-2.625-1.768-3.768-1.411-0.75 1.893-0.286 3.286-0.143 3.643-0.875 0.964-1.411 2.179-1.411 3.679 0 5.25 3.196 6.429 6.25 6.768-0.393 0.357-0.75 0.964-0.875 1.839-0.786 0.357-2.786 0.964-3.982-1.143-0.75-1.304-2.107-1.411-2.107-1.411-1.339-0.018-0.089 0.839-0.089 0.839 0.893 0.411 1.518 2 1.518 2 0.804 2.446 4.625 1.625 4.625 1.625 0 1.143 0.018 2.214 0.018 2.554 0 0.357-0.25 0.786-0.946 0.661-5.446-1.821-9.375-6.964-9.375-13.018 0-7.571 6.143-13.714 13.714-13.714zM5.196 21.982c0.036-0.071-0.018-0.161-0.125-0.214-0.107-0.036-0.196-0.018-0.232 0.036-0.036 0.071 0.018 0.161 0.125 0.214 0.089 0.054 0.196 0.036 0.232-0.036zM5.75 22.589c0.071-0.054 0.054-0.179-0.036-0.286-0.089-0.089-0.214-0.125-0.286-0.054-0.071 0.054-0.054 0.179 0.036 0.286 0.089 0.089 0.214 0.125 0.286 0.054zM6.286 23.393c0.089-0.071 0.089-0.214 0-0.339-0.071-0.125-0.214-0.179-0.304-0.107-0.089 0.054-0.089 0.196 0 0.321s0.232 0.179 0.304 0.125zM7.036 24.143c0.071-0.071 0.036-0.232-0.071-0.339-0.125-0.125-0.286-0.143-0.357-0.054-0.089 0.071-0.054 0.232 0.071 0.339 0.125 0.125 0.286 0.143 0.357 0.054zM8.054 24.589c0.036-0.107-0.071-0.232-0.232-0.286-0.143-0.036-0.304 0.018-0.339 0.125s0.071 0.232 0.232 0.268c0.143 0.054 0.304 0 0.339-0.107zM9.179 24.679c0-0.125-0.143-0.214-0.304-0.196-0.161 0-0.286 0.089-0.286 0.196 0 0.125 0.125 0.214 0.304 0.196 0.161 0 0.286-0.089 0.286-0.196zM10.214 24.5c-0.018-0.107-0.161-0.179-0.321-0.161-0.161 0.036-0.268 0.143-0.25 0.268 0.018 0.107 0.161 0.179 0.321 0.143s0.268-0.143 0.25-0.25z"></path>
+            </symbol>
+            <symbol id="icon-linkedin" viewBox="0 0 27 32">
+                <title>linkedin</title>
+                <path d="M6.232 11.161v17.696h-5.893v-17.696h5.893zM6.607 5.696c0.018 1.696-1.268 3.054-3.321 3.054v0h-0.036c-1.982 0-3.25-1.357-3.25-3.054 0-1.732 1.321-3.054 3.321-3.054 2.018 0 3.268 1.321 3.286 3.054zM27.429 18.714v10.143h-5.875v-9.464c0-2.375-0.857-4-2.982-4-1.625 0-2.589 1.089-3.018 2.143-0.143 0.393-0.196 0.911-0.196 1.446v9.875h-5.875c0.071-16.036 0-17.696 0-17.696h5.875v2.571h-0.036c0.768-1.214 2.161-2.982 5.339-2.982 3.875 0 6.768 2.536 6.768 7.964z"></path>
+            </symbol>
+            <symbol id="icon-xing" viewBox="0 0 25 32">
+                <title>xing</title>
+                <path d="M10.661 11.911c0 0-0.179 0.304-4.589 8.143-0.232 0.393-0.536 0.821-1.161 0.821h-4.268c-0.25 0-0.446-0.125-0.554-0.304s-0.125-0.411 0-0.643l4.518-8c0.018 0 0.018 0 0-0.018l-2.875-4.982c-0.125-0.232-0.143-0.482-0.018-0.661 0.107-0.179 0.321-0.268 0.571-0.268h4.268c0.643 0 0.964 0.429 1.179 0.804 2.911 5.089 2.929 5.107 2.929 5.107zM25.054 0.446c0.125 0.179 0.125 0.429 0 0.661l-9.429 16.679c-0.018 0-0.018 0.018 0 0.018l6 10.982c0.125 0.232 0.125 0.482 0.018 0.661-0.125 0.179-0.321 0.268-0.571 0.268h-4.268c-0.643 0-0.982-0.429-1.179-0.804-6.054-11.089-6.054-11.107-6.054-11.107s0.304-0.536 9.482-16.821c0.232-0.411 0.5-0.804 1.143-0.804h4.304c0.25 0 0.446 0.089 0.554 0.268z"></path>
+            </symbol>
+            <symbol id="icon-xing-square" viewBox="0 0 27 32">
+                <title>xing-square</title>
+                <path d="M12.232 13.661c0 0 0-0.018-2.25-3.964-0.179-0.286-0.429-0.607-0.929-0.607h-3.286c-0.214 0-0.375 0.071-0.464 0.196-0.089 0.143-0.071 0.339 0.018 0.518l2.232 3.857v0.018l-3.5 6.179c-0.107 0.179-0.089 0.357 0 0.5s0.232 0.232 0.429 0.232h3.304c0.482 0 0.732-0.339 0.893-0.643 3.429-6.054 3.554-6.286 3.554-6.286zM23.375 4.786c-0.089-0.143-0.232-0.214-0.429-0.214h-3.339c-0.482 0-0.696 0.304-0.875 0.625-7.107 12.607-7.339 13.018-7.339 13.018s0 0.018 4.679 8.589c0.161 0.286 0.411 0.625 0.929 0.625h3.286c0.196 0 0.357-0.071 0.446-0.214s0.089-0.321-0.018-0.5l-4.643-8.5v-0.018l7.304-12.911c0.089-0.179 0.089-0.357 0-0.5zM27.429 7.429v17.143c0 2.839-2.304 5.143-5.143 5.143h-17.143c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143c2.839 0 5.143 2.304 5.143 5.143z"></path>
+            </symbol>
+            <symbol id="icon-stack-overflow" viewBox="0 0 27 32">
+                <title>stack-overflow</title>
+                <path d="M23.018 29.143h-19.964v-8.571h-2.857v11.429h25.679v-11.429h-2.857v8.571zM6.196 19.786l0.589-2.804 13.982 2.946-0.589 2.786zM8.036 13.107l1.196-2.607 12.946 6.054-1.196 2.589zM11.625 6.75l1.821-2.196 10.964 9.161-1.821 2.196zM18.714 0l8.518 11.446-2.286 1.714-8.518-11.446zM5.893 26.268v-2.839h14.286v2.839h-14.286z"></path>
+            </symbol>
+            <symbol id="icon-envelope-square" viewBox="0 0 27 32">
+                <title>envelope-square</title>
+                <path d="M22.286 2.286c2.839 0 5.143 2.304 5.143 5.143v17.143c0 2.839-2.304 5.143-5.143 5.143h-17.143c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143zM22.857 21.143v-7.786c-0.339 0.375-0.714 0.714-1.143 0.982-1.679 1.107-3.411 2.143-5.071 3.286-0.839 0.589-1.875 1.232-2.929 1.232v0 0 0 0c-1.054 0-2.089-0.643-2.929-1.232-1.661-1.143-3.411-2.161-5.071-3.304-0.411-0.268-0.732-0.661-1.143-0.964v7.786c0 0.946 0.768 1.714 1.714 1.714h14.857c0.946 0 1.714-0.768 1.714-1.714zM22.857 10.911c0-0.964-0.714-1.768-1.714-1.768h-14.857c-0.946 0-1.714 0.768-1.714 1.714 0 0.964 1 2.018 1.75 2.518 1.571 1.054 3.196 2.036 4.768 3.071 0.679 0.446 1.804 1.268 2.625 1.268s1.946-0.821 2.625-1.268c1.589-1.036 3.179-2.054 4.768-3.107 0.696-0.464 1.75-1.536 1.75-2.429z"></path>
+            </symbol>
+            <symbol id="icon-linkedin-square1" viewBox="0 0 27 32">
+                <title>linkedin-square1</title>
+                <path d="M4.232 25.25h4.125v-12.393h-4.125v12.393zM8.625 9.036c-0.018-1.214-0.893-2.143-2.304-2.143s-2.339 0.929-2.339 2.143c0 1.179 0.893 2.143 2.286 2.143h0.018c1.446 0 2.339-0.964 2.339-2.143zM19.071 25.25h4.125v-7.107c0-3.804-2.036-5.571-4.75-5.571-2.214 0-3.196 1.232-3.732 2.089h0.036v-1.804h-4.125s0.054 1.161 0 12.393v0h4.125v-6.929c0-0.357 0.018-0.732 0.125-1 0.304-0.732 0.982-1.5 2.125-1.5 1.482 0 2.071 1.125 2.071 2.804v6.625zM27.429 7.429v17.143c0 2.839-2.304 5.143-5.143 5.143h-17.143c-2.839 0-5.143-2.304-5.143-5.143v-17.143c0-2.839 2.304-5.143 5.143-5.143h17.143c2.839 0 5.143 2.304 5.143 5.143z"></path>
+            </symbol>
+        </defs>
+    </svg>
+    <header id="main">
+        <div class="row banner">
+            <div class="banner-text">
+                <h1 class="responsive-headline">Hi, I'm Marvin</h1>
+                <h3>
+                    Software Developer at an automotive industry company and freelancer from Lippetal (Germany)
+                </h3>
+                <hr>
+                <ul class="social">
+                    <li>
+                        <a class="hover" href="https://github.com/marvincaspar" target="_blank">
+                            <svg class="icon icon-github">
+                                <use xlink:href="#icon-github"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover" href="https://www.xing.com/profile/marvin_caspar" target="_blank">
+                            <svg class="icon icon-xing">
+                                <use xlink:href="#icon-xing"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover" href="https://www.linkedin.com/in/marvincaspar" target="_blank">
+                            <svg class="icon icon-linkedin">
+                                <use xlink:href="#icon-linkedin"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover" href="https://twitter.com/marvincaspar" target="_blank">
+                            <svg class="icon icon-twitter">
+                                <use xlink:href="#icon-twitter"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover" href="https://stackoverflow.com/users/3544524/marvin-caspar?tab=profile" target="_blank">
+                            <svg class="icon icon-stack-overflow">
+                                <use xlink:href="#icon-stack-overflow"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover" href="https://www.facebook.com/marvin.caspar" target="_blank">
+                            <svg class="icon icon-facebook">
+                                <use xlink:href="#icon-facebook"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <!-- <li><a class="hover" href="mailto:post@marvincaspar.de"><svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <p class="location">
+            <!-- Lippetal | Germany |  -->
+            <a href="#" id="open-impressum-modal" class="hover">Impressum</a>
+        </p>
+    </header>
+    <div id="impressum-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Impressum</h1>
+            <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+            <p>Marvin Caspar
+                <br /> Am Steinbach 89
+                <br /> 59510 Lippetal
+            </p>
+            <h2>Kontakt</h2>
+            <p>Telefon: +49 (0) 178 850 11 63
+                <br /> E-Mail: kontakt@caspar.dev
+            </p>
+            <h2>Ausschluss der Haftung:</h2>
+            <h3>1. Haftung für Inhalte</h3>
+            <p>Der Inhalt meiner Internetseite wurde mit größtmöglicher Sorgfalt erstellt. Ich übernehme jedoch keine Gewähr dafür, dass dieser Inhalt richtig, vollständig, und aktuell ist und zudem noch gefällt. Gemäß § 7 Abs. 1 TMG bin ich für den Inhalt verantwortlich, selbst wenn dieser wurde bestellt.
+                <br /> Gemäß den §§ 8, 9 und 10 TMG ist für mich keine Verpflichtung gegeben, dass ich Informationen von Dritten, die übermittelt oder gespeichert wurden, überwache oder Umstände erhebe, die Hinweise auf nicht rechtmäßige Tätigkeiten ergeben.
+                <br /> Davon nicht berührt, ist meine Verpflichtung zur Sperrung oder Entfernung von Informationen, welche von den allgemeinen Gesetzen herrührt.
+                <br /> Ich hafte allerdings erst in dem Moment, in dem ich von einer konkreten Verletzung von Rechten Kenntnis bekomme. Dann wird eine unverzügliche Entfernung des entsprechenden Inhalts vorgenommen.
+            </p>
+            <h3>2. Haftung für Links</h3>
+            <p>Meine Internetseite enthält Links, die zu externen Internetseiten von Dritten führen, auf deren Inhalte ich jedoch keinen Einfluss habe. Es ist mir daher nicht möglich, eine Gewähr für diese Inhalte zu tragen.
+                <br /> Die Verantwortung dafür hat immer der jeweilige Anbieter/Betreiber der entsprechenden Internetseite. Ich überprüfe die von mir verlinkten Internetseiten zum Zeitpunkt der Verlinkung auf einen möglichen Rechtsverstoß in voller Breite.
+                <br /> Es kann mir jedoch, ohne einen konkreten Anhaltspunkt, nicht zugemutet werden, ständig die verlinkten Internetseiten inhaltlich zu überwachen. Wenn ich jedoch von einer Rechtsverletzung Kenntnis erlange, werde ich den entsprechenden Link unverzüglich entfernen, das kann ich machen.
+            </p>
+            <h3>3. Urheberrecht</h3>
+            <p>Die auf meiner Internetseite enthaltenen Inhalte sind, soweit möglich, urheberrechtlich geschützt. Es bedarf einer schriftlichen Genehmigung des Erstellers für denjenigen, der die Inhalte vervielfältigt, bearbeitet, verbreitet oder nützt.
+                <br /> Das Herunterladen und Kopieren meiner Internetseite ist sowohl für den privaten als auch den kommerziellen Gebrauch von mir schriftlich zu gestatten. Ich weise darauf hin, dass ich hinsichtlich der Inhalte auf meiner Internetseite, soweit sie nicht von mir erstellt worden sind, das Urheberrecht von Dritten jederzeit beachtet hatte.
+                <br /> Wenn Sie mir mitteilen würden, dass Sie trotzdem eine Urheberrechtsverletzung gefunden haben, würde ich das sehr schätzen. Dann kann ich den entsprechenden Inhalt sofort entfernen und würde damit das Urheberrecht nicht mehr verletzen.
+            </p>
+            <h3>4. Datenschutz</h3>
+            <p>Meine Internetseite kann regelmäßig ohne die Angabe von personenbezogenen Daten genutzt werden. Falls solche Daten (z.B. Name, Adresse oder E-Mail) doch erhoben werden sollten, geschieht das, freiwillig oder nur mit ausdrücklicher Zustimmung durch Sie und durch mich zu verbergen.
+                <br /> Die Übertragung von Daten im Internet ist mit Sicherheitslücken befangen. Es ist daher möglich, dass Dritte Zugriff auf diese Daten erlangen. Ein lückenloser Schutz ist nicht möglich, wenn auch löblich.
+                <br /> Ich widerspreche an dieser Stelle der Nutzung meiner Kontaktdaten, um mir damit nicht verlangte Werbung/Informationsmaterial/Spam-Mails zukommen zu lassen. Sollte dies dennoch geschehen, müsste ich rechtliche Schritte ins Auge fassen.
+            </p>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById('impressum-modal');
+        var btn = document.getElementById("open-impressum-modal");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

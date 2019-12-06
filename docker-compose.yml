@@ -1,16 +1,17 @@
 version: '3.6'
 
 services:
-  web:
+  nginx:
     image: docker.pkg.github.com/marvincaspar/marvincaspar/web:latest
     networks:
       - web
     labels:
-      traefik.docker.network: web
-      traefik.enable: true
-      traefik.basic.frontend.rule: Host:marvincaspar.de,www.marvincaspar.de
-      traefik.basic.port: 80
-      traefik.backend: marvincaspar
+      traefik.http.routers.marvincaspar.rule: Host(`marvincaspar.dev`,`www.marvincaspar.dev`)
+      traefik.http.routers.marvincaspar.entrypoints: websecure
+      traefik.http.routers.marvincaspar.tls: true
+      # traefik.http.routers.marvincaspar.middleware: https-redirect
+      # traefik.http.middlewares.https-redirect.redirectscheme.scheme: https
+      traefik.http.routers.marvincaspar.tls.certresolver: le
 
 networks:
   web:

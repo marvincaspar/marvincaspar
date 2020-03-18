@@ -6,11 +6,13 @@ services:
     networks:
       - web
     labels:
-      traefik.http.routers.marvincaspar.rule: Host(`marvincaspar.dev`,`www.marvincaspar.dev`)
-      traefik.http.routers.marvincaspar.entrypoints: websecure
-      traefik.http.routers.marvincaspar.tls: true
-      # traefik.http.routers.marvincaspar.middleware: https-redirect
-      # traefik.http.middlewares.https-redirect.redirectscheme.scheme: https
+      traefik.http.routers.marvincaspar.rule: Host(`i-am-a.dev`,`www.i-am-a.dev`,`caspar.dev`,`www.caspar.dev`,`marvincaspar.de`,`www.marvincaspar.de`,`mail.marvincaspar.de`)
+      traefik.http.routers.marvincaspar.middlewares: hsts-header
+      traefik.http.routers.marvincaspar.tls.options: intermediate
+      
+      traefik.http.routers.marvincaspar-insecure.rule: Host(`i-am-a.dev`,`www.i-am-a.dev`,`caspar.dev`,`www.caspar.dev`,`marvincaspar.de`,`www.marvincaspar.de`,`mail.marvincaspar.de`)
+      traefik.http.routers.marvincaspar-insecure.middlewares: redirect-to-https,hsts-header
+
       traefik.http.routers.marvincaspar.tls.certresolver: le
 
 networks:

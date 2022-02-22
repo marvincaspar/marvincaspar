@@ -27,16 +27,6 @@
 <img align="left" src="https://devicons.github.io/devicon/devicon.git/icons/php/php-original.svg" alt="php" width="40" height="40"/> 
 <img align="left" src="https://devicons.github.io/devicon/devicon.git/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
 
-<br />
-<br />
-
----
-
-![Marvin's github stats](https://github-readme-stats-nu.vercel.app/api?username=marvincaspar&show_icons=true&hide_border=true)
-
-![Top Langs](https://github-readme-stats-nu.vercel.app/api/top-langs/?username=marvincaspar&layout=compact)
-
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=marvincaspar.marvincaspar)
 
 [website]: https://marvincaspar.de/
 [twitter]: https://twitter.com/marvincaspar

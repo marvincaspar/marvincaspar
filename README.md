@@ -1,11 +1,5 @@
 ### Hi there, I'm Marvin 👋
 
-## I'm a Husband and Developer!
-- 👨‍💻 I’m currently working as a Full-stack Developer.
-- 🌱 I’m currently learning go
-- 🥅 2020 Goals: Contribute more to Open Source projects
-- ⚡ Fun fact: The Nintendo Game Boy went to space.
-
 ### Connect with me:
 
 [<img align="left" alt="marvincaspar.de" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website] 
